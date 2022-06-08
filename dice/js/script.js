@@ -20,8 +20,24 @@ rollBtn.addEventListener('click',
             message = 'Mi dispiace, hai perso!'
         }
 
-        document.getElementById('result').innerHTML = message;
+        // Imposto i due dadi
+        let userResult = document.getElementById('user-dice');
+        let pcResult = document.getElementById('pc-dice');
 
+        // Creo un punto del dado
+        const diceDot  = `<div class="dice-dot"></div> `
+
+        // Inserisco i punti in base al risultato nei dadi 
+        for( let a = 1; a <= userDice; a++) {
+            userResult.innerHTML += diceDot
+        }
+
+        for( let b = 1; b <= pcDice; b++) {
+            pcResult.innerHTML += diceDot
+        }  
+
+        // Stampo nel DOM il vincitore
+        document.getElementById('result').innerHTML = message;
     }
 )
 
