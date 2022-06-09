@@ -2,7 +2,7 @@
 const rollBtn = document.getElementById('roll-btn');
 
 // Creo un array per salvare i risultati
-let array = [];
+// let array = [];
 
 // Associo il lancio dei dadi al click al click
 rollBtn.addEventListener('click',
@@ -14,25 +14,14 @@ rollBtn.addEventListener('click',
         let userFaceSelector;
         let pcFaceSelector;
 
-        if(array != false) {
-            // Seleziono le facce dei dadi
-            userFaceSelector = document.getElementById( `user-${array[0]}` );
-            pcFaceSelector = document.getElementById( `pc-${array[1]}` );
-
-            // Resetto la faccia del lancio precedente
-            userFaceSelector.classList.remove('active');
-            pcFaceSelector.classList.remove('active');
-        }   else {
-            // Genero la variabile della faccia dei dadi
-            userFaceSelector = document.getElementById( `user-${userDice}` );
-            pcFaceSelector = document.getElementById( `pc-${pcDice}` );
+        // Resetto il display block
+        for( i = 1; i <= 6; i++) {
+            userFaceSelector = document.getElementById( `user-${i}` );
+            pcFaceSelector = document.getElementById( `pc-${i}` );
+            userFaceSelector.style.display = 'none'; 
+            pcFaceSelector.style.display = 'none';
         }
 
-        // Resetto l'array    
-        array = []
-        console.log(array)
-        //Salvo i risultati
-        array.push(userDice, pcDice);
         // Creo la variabile relativa al messaggio dell'esito
         let message;
 
@@ -45,9 +34,13 @@ rollBtn.addEventListener('click',
             message = 'Mi dispiace, hai perso!';
         }
 
+        // Seleziono la faccia del dado
+        userFaceSelector = document.getElementById( `user-${userDice}` );
+        pcFaceSelector = document.getElementById( `pc-${pcDice}` );
+
         // Assegno la classe alle immagini selezionate
-        userFaceSelector.classList.add('active');
-        pcFaceSelector.classList.add('active');
+        userFaceSelector.style.display = 'block';
+        pcFaceSelector.style.display = 'block';
 
         // Stampo nel DOM il vincitore
         document.getElementById('result').innerHTML = message;
