@@ -23,6 +23,10 @@ rollBtn.addEventListener('click',
         // Imposto i due dadi
         let userResult = document.getElementById('user-dice');
         let pcResult = document.getElementById('pc-dice');
+        
+        // Resetto il lancio precedente
+        userResult.innerHTML = '';
+        pcResult.innerHTML = '';
 
         // Creo un punto del dado
         const diceDot  = `<div class="dice-dot"></div> `
